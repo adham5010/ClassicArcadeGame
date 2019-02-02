@@ -89,7 +89,7 @@ Player.prototype.handleInput = function (direction) {
                 (this.x > 0) ? this.x -= 101: this.x = this.x;
                 break;
             case 'up':
-                this.y -= 83;
+                this.y>56?this.y -= 83:this.y=this.y;
                 break;
             case 'right':
                 (this.x < 404) ? this.x += 101: this.x = this.x;
@@ -98,12 +98,6 @@ Player.prototype.handleInput = function (direction) {
                 (this.y < 404) ? this.y += 83: this.y = this.y;
                 break;
         }
-    if(this.y<70){
-        setTimeout(() => {
-            this.x=202;
-            this.y=404;
-        }, 1000);
-    }
 }
 
 // This listens for key presses and sends the keys to your
@@ -115,10 +109,20 @@ document.addEventListener('keyup', function (e) {
         39: 'right',
         40: 'down'
     };
-    if(player.y<83){
-        setTimeout(() => {
-            allEnemies = [];            
-        }, 1000);
-    }
-    player.handleInput(allowedKeys[e.keyCode]);
+        player.handleInput(allowedKeys[e.keyCode]);
+        if(player.y<56){
+            var WonButton = document.getElementById("resetGame");
+            WonButton.parentElement.removeAttribute('style');
+        }
+});
+
+
+document.addEventListener('DOMContentLoaded',function(){
+    var WonButton = document.getElementById("resetGame");
+    WonButton.addEventListener('click',function(){
+        player= new Player();
+        allEnemies = [];
+        WonButton.parentElement.style.display = 'none';
+    });
+
 });

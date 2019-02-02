@@ -1,3 +1,22 @@
 body {
     text-align: center;
 }
+
+.won-container{
+    position: absolute;
+    width:100%;
+    text-align: center;
+    height: 1000px;
+    background-color: blanchedalmond;
+}
+
+.hidden{
+    display:none;
+}
+
+#resetGame{
+color:white;
+border-radius: 10px;
+background-color: green;
+border : 0;
+}
